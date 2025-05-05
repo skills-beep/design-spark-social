@@ -1,8 +1,9 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Menu, X, Search, Bell, MessageSquare } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, Search, Bell, MessageSquare, Sun, Moon, Stars } from "lucide-react";
+import { useTheme } from "@/hooks/use-theme";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -17,6 +18,8 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
+  const location = useLocation();
   
   // Handle scroll effect for sticky header
   useEffect(() => {
@@ -30,6 +33,16 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [scrolled]);
+
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  // Function to toggle theme
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
 
   return (
     <nav className={cn(
@@ -53,10 +66,16 @@ const Navbar = () => {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link to="/" className="font-medium hover:text-primary transition-colors px-3 py-2">Home</Link>
+                <Link to="/" className={cn(
+                  "font-medium transition-colors px-3 py-2",
+                  location.pathname === "/" ? "text-primary" : "hover:text-primary"
+                )}>Home</Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/discover" className="font-medium hover:text-primary transition-colors px-3 py-2">Discover</Link>
+                <Link to="/discover" className={cn(
+                  "font-medium transition-colors px-3 py-2",
+                  location.pathname === "/discover" ? "text-primary" : "hover:text-primary"
+                )}>Discover</Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
@@ -101,13 +120,36 @@ const Navbar = () => {
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link to="/community" className="font-medium hover:text-primary transition-colors px-3 py-2">Community</Link>
+                <Link to="/community" className={cn(
+                  "font-medium transition-colors px-3 py-2",
+                  location.pathname === "/community" ? "text-primary" : "hover:text-primary"
+                )}>Community</Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/events" className={cn(
+                  "font-medium transition-colors px-3 py-2",
+                  location.pathname === "/events" ? "text-primary" : "hover:text-primary"
+                )}>Events</Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/resources" className={cn(
+                  "font-medium transition-colors px-3 py-2",
+                  location.pathname === "/resources" ? "text-primary" : "hover:text-primary"
+                )}>Resources</Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
         </div>
         
         <div className="hidden md:flex items-center gap-3">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="rounded-full bg-background/50 hover:bg-background/80 transition-colors"
+            onClick={toggleTheme}
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </Button>
           <Button variant="ghost" size="icon" className="rounded-full bg-background/50 hover:bg-background/80 transition-colors">
             <Search size={20} />
           </Button>
@@ -120,51 +162,122 @@ const Navbar = () => {
           <Button variant="default" className="rounded-full shadow-md hover:shadow-lg transition-all">Sign In</Button>
         </div>
         
-        <Button 
-          variant="ghost" 
-          size="icon" 
-          className="md:hidden rounded-full bg-background/60 hover:bg-background/80 transition-colors"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </Button>
+        {/* Mobile menu button */}
+        <div className="flex md:hidden items-center gap-2">
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="rounded-full bg-background/50 hover:bg-background/80 transition-colors"
+            onClick={toggleTheme}
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </Button>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="rounded-full bg-background/60 hover:bg-background/80 transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </Button>
+        </div>
       </div>
       
-      {/* Mobile menu with improved animation and styling */}
-      {isOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 glass-effect animate-slide-up border-t border-white/10 shadow-lg">
-          <div className="flex flex-col p-4 space-y-1">
-            <Link to="/" className="flex items-center px-4 py-3 rounded-lg hover:bg-white/10 transition-colors" onClick={() => setIsOpen(false)}>
-              <span className="font-medium">Home</span>
-            </Link>
-            <Link to="/discover" className="flex items-center px-4 py-3 rounded-lg bg-white/10 text-primary font-medium" onClick={() => setIsOpen(false)}>
-              <span>Discover</span>
-            </Link>
-            <Link to="/projects" className="flex items-center px-4 py-3 rounded-lg hover:bg-white/10 transition-colors" onClick={() => setIsOpen(false)}>
-              <span className="font-medium">Projects</span>
-            </Link>
-            <Link to="/community" className="flex items-center px-4 py-3 rounded-lg hover:bg-white/10 transition-colors" onClick={() => setIsOpen(false)}>
-              <span className="font-medium">Community</span>
-            </Link>
-            
-            <div className="h-px bg-white/10 my-2"></div>
-            
-            <div className="flex items-center justify-between px-4 py-2">
-              <div className="flex space-x-2">
-                <Button variant="ghost" size="icon" className="rounded-full bg-background/60 hover:bg-background/80">
-                  <Search size={18} />
-                </Button>
-                <Button variant="ghost" size="icon" className="rounded-full bg-background/60 hover:bg-background/80">
-                  <Bell size={18} />
-                </Button>
-                <Button variant="ghost" size="icon" className="rounded-full bg-background/60 hover:bg-background/80">
-                  <MessageSquare size={18} />
-                </Button>
+      {/* Mobile menu drawer with improved animation and styling */}
+      <div 
+        className={cn(
+          "fixed inset-y-0 right-0 z-50 w-3/4 max-w-sm glass-effect shadow-lg transition-transform duration-300 ease-in-out transform md:hidden",
+          isOpen ? "translate-x-0" : "translate-x-full"
+        )}
+      >
+        <div className="flex flex-col h-full">
+          <div className="flex items-center justify-between p-4 border-b border-white/10">
+            <div className="flex items-center gap-2">
+              <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-creative-purple to-creative-blue flex items-center justify-center">
+                <span className="text-white font-bold text-sm">C</span>
               </div>
-              <Button variant="default" size="sm" className="rounded-full shadow-md">Sign In</Button>
+              <span className="text-lg font-display font-bold">CreativeSpark</span>
+            </div>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="rounded-full"
+              onClick={() => setIsOpen(false)}
+            >
+              <X size={24} />
+            </Button>
+          </div>
+          
+          <div className="flex-1 overflow-y-auto">
+            <div className="flex flex-col py-4 space-y-1">
+              <Link to="/" className={cn(
+                "flex items-center px-6 py-3 hover:bg-white/10 transition-colors",
+                location.pathname === "/" ? "text-primary bg-white/10 border-l-2 border-primary" : ""
+              )}>
+                <span className="font-medium">Home</span>
+              </Link>
+              <Link to="/discover" className={cn(
+                "flex items-center px-6 py-3 hover:bg-white/10 transition-colors",
+                location.pathname === "/discover" ? "text-primary bg-white/10 border-l-2 border-primary" : ""
+              )}>
+                <span className="font-medium">Discover</span>
+              </Link>
+              <Link to="/projects" className={cn(
+                "flex items-center px-6 py-3 hover:bg-white/10 transition-colors",
+                location.pathname === "/projects" ? "text-primary bg-white/10 border-l-2 border-primary" : ""
+              )}>
+                <span className="font-medium">Projects</span>
+              </Link>
+              <Link to="/community" className={cn(
+                "flex items-center px-6 py-3 hover:bg-white/10 transition-colors",
+                location.pathname === "/community" ? "text-primary bg-white/10 border-l-2 border-primary" : ""
+              )}>
+                <span className="font-medium">Community</span>
+              </Link>
+              <Link to="/events" className={cn(
+                "flex items-center px-6 py-3 hover:bg-white/10 transition-colors",
+                location.pathname === "/events" ? "text-primary bg-white/10 border-l-2 border-primary" : ""
+              )}>
+                <span className="font-medium">Events</span>
+              </Link>
+              <Link to="/resources" className={cn(
+                "flex items-center px-6 py-3 hover:bg-white/10 transition-colors",
+                location.pathname === "/resources" ? "text-primary bg-white/10 border-l-2 border-primary" : ""
+              )}>
+                <span className="font-medium">Resources</span>
+              </Link>
+
+              <div className="h-px bg-white/10 my-2 mx-6"></div>
+              
+              <div className="px-6 space-y-2">
+                <div className="flex items-center gap-3 py-2">
+                  <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full bg-background/60 hover:bg-background/80">
+                    <Search size={18} />
+                  </Button>
+                  <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full bg-background/60 hover:bg-background/80">
+                    <Bell size={18} />
+                  </Button>
+                  <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full bg-background/60 hover:bg-background/80">
+                    <MessageSquare size={18} />
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
+          
+          {/* Sign in button fixed at bottom */}
+          <div className="p-4 border-t border-white/10">
+            <Button variant="default" className="w-full rounded-full shadow-md">Sign In</Button>
+          </div>
         </div>
+      </div>
+      
+      {/* Overlay when menu is open */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+          onClick={() => setIsOpen(false)}
+        />
       )}
     </nav>
   );
