@@ -170,6 +170,34 @@
       transform: translateX(0);
     }
   }
+  
+  /* New animations for interactive elements */
+  .hover-grow {
+    transition: transform 0.2s ease;
+  }
+  
+  .hover-grow:hover {
+    transform: scale(1.05);
+  }
+  
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  
+  @keyframes floating {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(0, -10px); }
+    100% { transform: translate(0, 0); }
+  }
+  
+  .glowing {
+    animation: glowing 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glowing {
+    0% { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.3)); }
+    100% { filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6)); }
+  }
 }
 
 /* Improved glass effect for dark mode */
@@ -215,10 +243,69 @@
   box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.4);
 }
 
+/* Sun effect for light mode */
+.sun-container {
+  position: fixed;
+  top: 60px;
+  right: 60px;
+  width: 80px;
+  height: 80px;
+  z-index: -1;
+  pointer-events: none;
+  transition: transform 0.5s ease;
+}
+
+.sun {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, #FFF176, #FFEB3B, #FFC107, #FF9800);
+  box-shadow: 
+    0 0 60px 10px rgba(255, 235, 59, 0.4),
+    0 0 100px 20px rgba(255, 152, 0, 0.2);
+  animation: pulseSun 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseSun {
+  0% { transform: scale(1); box-shadow: 0 0 60px 10px rgba(255, 235, 59, 0.4), 0 0 100px 20px rgba(255, 152, 0, 0.2); }
+  50% { transform: scale(1.05); box-shadow: 0 0 70px 15px rgba(255, 235, 59, 0.5), 0 0 120px 30px rgba(255, 152, 0, 0.3); }
+  100% { transform: scale(1); box-shadow: 0 0 60px 10px rgba(255, 235, 59, 0.4), 0 0 100px 20px rgba(255, 152, 0, 0.2); }
+}
+
+/* Heat wave effect for light mode */
+.heat-wave {
+  position: absolute;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(255,196,161,0), rgba(255,196,161,0.5), rgba(255,196,161,0));
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: waveMove 8s linear infinite;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 0.3; }
+  100% { transform: translateX(100vw); opacity: 0; }
+}
+
 /* Mobile responsiveness improvements */
 @media (max-width: 768px) {
   .container {
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  
+  .sun-container {
+    top: 40px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .dark .moon-container {
+    top: 40px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
   }
 }
