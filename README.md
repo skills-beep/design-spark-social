@@ -1,73 +1,113 @@
-# Welcome to your Lovable project
+CreativeSpark
+Connect, Collaborate, Create
+A modern platform for creative professionals to collaborate and network.
 
-## Project info
+🚀 Project Overview
+CreativeSpark is a web-based platform designed to help creative professionals connect, collaborate, and showcase their work. Built using React, TypeScript, Tailwind CSS, and the Shadcn component library, the project emphasizes modular design, modern UI, and scalable architecture.
 
-**URL**: https://lovable.dev/projects/799099a5-fb14-491c-96d0-19fe30de28fa
+🌟 Features
+Modern responsive design
 
-## How can I edit this code?
+React with TypeScript setup
 
-There are several ways of editing your application.
+Tailwind CSS for utility-first styling
 
-**Use Lovable**
+Shadcn UI components for clean, reusable elements
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/799099a5-fb14-491c-96d0-19fe30de28fa) and start prompting.
+ESLint + TypeScript rules for code consistency
 
-Changes made via Lovable will be committed automatically to this repo.
+Optimized for performance and accessibility
 
-**Use your preferred IDE**
+📦 Project Structure
+pgsql
+Copy
+Edit
+/src
+  /components     → Reusable React components
+  /lib            → Utility functions and helpers
+  /hooks          → Custom React hooks
+  /ui             → UI components from Shadcn
+public/           → Static assets
+index.html        → Main HTML entry point
+eslint.config.js  → ESLint configuration
+components.json   → Shadcn UI setup config
+bun.lockb         → Bun package lock file
+.gitignore        → Git ignore rules
+🛠️ Tech Stack
+React + TypeScript
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Tailwind CSS
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Shadcn UI
 
-Follow these steps:
+Bun (package manager)
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+ESLint (with React Hooks & TypeScript plugins)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+⚙️ Setup Instructions
+Clone the repository
 
-# Step 3: Install the necessary dependencies.
-npm i
+bash
+Copy
+Edit
+git clone <your-repo-url>
+cd creativespark
+Install dependencies
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+bash
+Copy
+Edit
+bun install
+Run the development server
 
-**Edit a file directly in GitHub**
+bash
+Copy
+Edit
+bun run dev
+Build for production
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+bash
+Copy
+Edit
+bun run build
+Lint the code
 
-**Use GitHub Codespaces**
+bash
+Copy
+Edit
+bun run lint
+📄 Important Files
+index.html → Main HTML file setting up the root container and script loading.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+eslint.config.js → Configures ESLint rules, including React Hooks and refresh support.
 
-## What technologies are used for this project?
+components.json → Defines Shadcn UI styles, aliases, and Tailwind integration.
 
-This project is built with:
+📢 Notes
+The platform uses Bun instead of npm/yarn, so ensure you have Bun installed: https://bun.sh.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Tailwind CSS is configured with TypeScript support via tailwind.config.ts.
 
-## How can I deploy this project?
+Make sure to follow ESLint rules for consistent code quality.
 
-Simply open [Lovable](https://lovable.dev/projects/799099a5-fb14-491c-96d0-19fe30de28fa) and click on Share -> Publish.
+📜 License
+This project is licensed under the MIT License.
+![image](https://github.com/user-attachments/assets/0fdf5281-86c2-4468-a5d2-abd6171b2099)
+![image](https://github.com/user-attachments/assets/f1f112a7-144d-4ab5-bd6a-4e7299805777)
+![image](https://github.com/user-attachments/assets/dfddc630-8f79-4337-b11c-99a6dd2639c2)
+![image](https://github.com/user-attachments/assets/81a35831-805f-499f-a5c2-74d5bc4798f1)
+![image](https://github.com/user-attachments/assets/12ff52d0-306a-4eb2-88f2-0f81ccc8e115)
+![image](https://github.com/user-attachments/assets/391a32c5-d513-4cf9-9e50-ef4ddaa81f60)
+![image](https://github.com/user-attachments/assets/6e3ff885-1bff-47d2-9476-5ff8e552accf)
+![image](https://github.com/user-attachments/assets/f6f2d4ee-07ec-4dec-a51d-59eb93a63852)
+![image](https://github.com/user-attachments/assets/9bf86c8a-fcd9-4616-a90a-49d56a11dc7e)
 
-## Can I connect a custom domain to my Lovable project?
 
-Yes, you can!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+
+
+
+
+
+
