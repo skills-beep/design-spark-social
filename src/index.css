@@ -36,6 +36,15 @@
     --ring: 262 93% 58%;
 
     --radius: 0.75rem;
+    
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 240 10% 3.9%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 262 93% 58%;
   }
 
   .dark {
@@ -66,6 +75,15 @@
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
     --ring: 262 93% 58%;
+    
+    --sidebar-background: 240 10% 3.9%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217.2 32.6% 17.5%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 17.5%;
+    --sidebar-ring: 262 93% 58%;
   }
 }
 
@@ -90,5 +108,22 @@
   
   .text-gradient {
     @apply bg-gradient-to-r from-creative-purple to-creative-blue bg-clip-text text-transparent;
+  }
+  
+  /* Added new utility classes */
+  .bg-gradient-hero {
+    @apply bg-gradient-to-r from-creative-purple/90 to-creative-blue/90;
+  }
+  
+  .bg-gradient-card {
+    @apply bg-gradient-to-br from-white/50 to-white/30 dark:from-white/10 dark:to-transparent;
+  }
+  
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
+  }
+  
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2;
   }
 }
