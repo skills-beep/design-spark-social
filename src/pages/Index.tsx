@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { useTheme } from "@/hooks/use-theme";
 import { Moon, Sun } from "lucide-react";
@@ -14,6 +15,21 @@ const Index = () => {
   const { theme, setTheme } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [showThemeIcon, setShowThemeIcon] = useState(false);
+  const [stars, setStars] = useState<{ id: number; size: number; top: string; left: string; opacity: number }[]>([]);
+  
+  // Generate stars for dark mode
+  useEffect(() => {
+    if (theme === 'dark') {
+      const starsArray = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        size: Math.random() * 3,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        opacity: Math.random() * 0.8 + 0.2
+      }));
+      setStars(starsArray);
+    }
+  }, [theme]);
   
   // Scroll to top on page load
   useEffect(() => {
@@ -71,6 +87,23 @@ const Index = () => {
           }}
         ></div>
       </div>
+      
+      {/* Stars in dark mode */}
+      {theme === 'dark' && stars.map((star) => (
+        <div
+          key={star.id}
+          className="fixed rounded-full bg-white animate-pulse"
+          style={{
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            top: star.top,
+            left: star.left,
+            opacity: star.opacity,
+            zIndex: -1,
+            boxShadow: `0 0 ${star.size * 2}px rgba(255,255,255,0.8)`
+          }}
+        ></div>
+      ))}
       
       {/* Moon in dark mode */}
       {theme === 'dark' && (

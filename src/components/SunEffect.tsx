@@ -1,30 +1,39 @@
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useState } from 'react';
 
 const SunEffect = () => {
-  const sunRef = useRef<HTMLDivElement>(null);
-  
+  const [heatWaves, setHeatWaves] = useState<{ id: number; delay: number; top: string; width: string }[]>([]);
+
+  // Create heat waves on component mount
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const sun = sunRef.current;
-      if (!sun) return;
-      
-      // Make the sun move slightly with mouse movement for interactive effect
-      const moveX = (e.clientX - window.innerWidth / 2) / 50;
-      const moveY = (e.clientY - window.innerHeight / 2) / 50;
-      
-      sun.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    };
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
+    const waves = [];
+    for (let i = 0; i < 5; i++) {
+      waves.push({
+        id: i,
+        delay: Math.random() * 5,
+        top: `${20 + i * 15}%`,
+        width: `${50 + Math.random() * 30}%`
+      });
+    }
+    setHeatWaves(waves);
   }, []);
-  
+
   return (
-    <div className="sun-container">
-      <div ref={sunRef} className="sun"></div>
+    <div className="sun-container animate-fade-in">
+      <div className="sun"></div>
+      
+      {/* Heat waves animation */}
+      {heatWaves.map((wave) => (
+        <div
+          key={wave.id}
+          className="heat-wave"
+          style={{
+            top: wave.top,
+            width: wave.width,
+            animationDelay: `${wave.delay}s`
+          }}
+        ></div>
+      ))}
     </div>
   );
 };
