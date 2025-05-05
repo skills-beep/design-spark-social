@@ -9,28 +9,28 @@ import { useToast } from "@/hooks/use-toast";
 const projectCards = [
   {
     id: 1,
-    title: "Traditional Textile Design",
+    title: "AI Art Generation Platform",
     creator: "Dema Wangchuck",
     avatar: "https://randomuser.me/api/portraits/women/32.jpg",
-    category: "Art & Culture",
+    category: "AI & Design",
     likes: 128,
     comments: 32,
     views: 1.4,
-    image: "https://images.unsplash.com/photo-1612968790286-7d6cf7c2cce3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
-    tags: ["Traditional Art", "Textiles", "Cultural"],
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+    tags: ["Artificial Intelligence", "Art", "Creative Coding"],
     color: "from-creative-purple to-creative-pink"
   },
   {
     id: 2,
-    title: "Himalayan Photography Series",
+    title: "Machine Learning Analysis Tool",
     creator: "Tshering Dorji",
     avatar: "https://randomuser.me/api/portraits/men/45.jpg",
-    category: "Photography",
+    category: "Data Science",
     likes: 97,
     comments: 24,
     views: 1.1,
-    image: "https://images.unsplash.com/photo-1605649461784-7e4008ac3291?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
-    tags: ["Photography", "Landscape", "Mountains"],
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+    tags: ["Machine Learning", "Analytics", "Programming"],
     color: "from-creative-blue to-creative-teal"
   },
   {
@@ -42,8 +42,8 @@ const projectCards = [
     likes: 156,
     comments: 42,
     views: 2.3,
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
-    tags: ["App Design", "Language", "Education"],
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+    tags: ["App Design", "Programming", "Education"],
     color: "from-creative-indigo to-creative-blue"
   }
 ];

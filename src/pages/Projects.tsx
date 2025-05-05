@@ -19,7 +19,7 @@ const Projects = () => {
       title: "Traditional Bhutanese Art Gallery",
       description: "A digital showcase of traditional Bhutanese paintings and sculptures with AR viewing capabilities.",
       creator: "Dorji Wangmo",
-      image: "https://images.unsplash.com/photo-1605146768851-eda79da39897?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
       category: "Art & Culture"
     },
     {
@@ -27,7 +27,7 @@ const Projects = () => {
       title: "Mountain Eco-Tourism Platform",
       description: "A platform connecting travelers with sustainable hiking experiences in the Himalayan mountains.",
       creator: "Tshering Penjor",
-      image: "https://images.unsplash.com/photo-1605649461784-7e4008ac3291?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
       category: "Tourism & Travel"
     },
     {
@@ -35,7 +35,7 @@ const Projects = () => {
       title: "Dzongkha Language Learning App",
       description: "Interactive application teaching Bhutan's native language through gamified experiences.",
       creator: "Karma Choden",
-      image: "https://images.unsplash.com/photo-1605737184497-5876c97507b0?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
       category: "Education"
     },
     {
@@ -43,7 +43,7 @@ const Projects = () => {
       title: "Bhutanese Textile Marketplace",
       description: "E-commerce platform showcasing authentic handwoven textiles from Bhutanese artisans.",
       creator: "Namgay Dorji",
-      image: "https://images.unsplash.com/photo-1612968790286-7d6cf7c2cce3?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
       category: "E-commerce"
     },
     {
@@ -51,7 +51,7 @@ const Projects = () => {
       title: "Himalayan Weather Monitor",
       description: "Real-time weather tracking system specialized for mountain climbers and trekkers.",
       creator: "Phurba Tshering",
-      image: "https://images.unsplash.com/photo-1612968999869-b757fdea5153?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3",
       category: "Technology"
     },
     {
@@ -59,7 +59,7 @@ const Projects = () => {
       title: "Bhutanese Festival Calendar",
       description: "Interactive calendar and guide to traditional Bhutanese festivals and celebrations.",
       creator: "Tashi Wangmo",
-      image: "https://images.unsplash.com/photo-1585159642191-da22f897840d?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3",
+      image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.0.3",
       category: "Culture & Events"
     }
   ];
