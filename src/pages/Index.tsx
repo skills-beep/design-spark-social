@@ -1,7 +1,6 @@
-
 import { useEffect, useState } from "react";
 import { useTheme } from "@/hooks/use-theme";
-import { Moon, Sun, HeatWave } from "lucide-react";
+import { Moon, Sun } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
