@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 
 const SunEffect = () => {
   const [heatWaves, setHeatWaves] = useState<{ id: number; delay: number; top: string; width: string }[]>([]);
+  const [isHovering, setIsHovering] = useState(false);
 
   // Create heat waves on component mount
   useEffect(() => {
@@ -19,18 +20,23 @@ const SunEffect = () => {
   }, []);
 
   return (
-    <div className="sun-container animate-fade-in">
-      <div className="sun"></div>
+    <div 
+      className="sun-container animate-fade-in"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
+    >
+      <div className={`sun ${isHovering ? 'glowing' : ''}`}></div>
       
       {/* Heat waves animation */}
       {heatWaves.map((wave) => (
         <div
           key={wave.id}
-          className="heat-wave"
+          className={`heat-wave ${isHovering ? 'heat-wave-active' : ''}`}
           style={{
             top: wave.top,
             width: wave.width,
-            animationDelay: `${wave.delay}s`
+            animationDelay: `${wave.delay}s`,
+            animationDuration: isHovering ? '4s' : '8s'
           }}
         ></div>
       ))}

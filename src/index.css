@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap');
 
 @tailwind base;
@@ -198,6 +197,24 @@
     0% { filter: drop-shadow(0 0 5px rgba(139, 92, 246, 0.3)); }
     100% { filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.6)); }
   }
+  
+  /* Bhutanese inspired decorative elements */
+  .bhutanese-border {
+    @apply relative;
+    &::before {
+      content: '';
+      @apply absolute inset-0 border-2 border-primary/30 rounded-lg pointer-events-none;
+      background-image: 
+        linear-gradient(45deg, var(--primary) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--primary) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--primary) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--primary) 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+    }
+  }
 }
 
 /* Improved glass effect for dark mode */
@@ -243,7 +260,7 @@
   box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.4);
 }
 
-/* Sun effect for light mode */
+/* Enhanced Sun effect for light mode */
 .sun-container {
   position: fixed;
   top: 60px;
@@ -264,6 +281,7 @@
     0 0 60px 10px rgba(255, 235, 59, 0.4),
     0 0 100px 20px rgba(255, 152, 0, 0.2);
   animation: pulseSun 8s ease-in-out infinite alternate;
+  transition: all 0.5s ease;
 }
 
 @keyframes pulseSun {
@@ -272,7 +290,7 @@
   100% { transform: scale(1); box-shadow: 0 0 60px 10px rgba(255, 235, 59, 0.4), 0 0 100px 20px rgba(255, 152, 0, 0.2); }
 }
 
-/* Heat wave effect for light mode */
+/* Enhanced Heat wave effect */
 .heat-wave {
   position: absolute;
   height: 10px;
@@ -280,6 +298,12 @@
   border-radius: 50%;
   opacity: 0.3;
   animation: waveMove 8s linear infinite;
+  transition: animation-duration 0.5s ease;
+}
+
+.heat-wave-active {
+  opacity: 0.5;
+  background: linear-gradient(90deg, rgba(255,180,120,0), rgba(255,180,120,0.7), rgba(255,180,120,0));
 }
 
 @keyframes waveMove {
